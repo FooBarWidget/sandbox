@@ -63,6 +63,6 @@ that also have a different look:
 
 Take a look at the 'templates' directory for available templates.
 
-== Credits
+## Credits
 
 This tool is named after Kazami Mizuho from the 2003 anime 'Onegai Teacher'.
