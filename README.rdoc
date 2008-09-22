@@ -208,3 +208,7 @@ the record is instantiated:
       3.years.from_now
     end
   end
+  
+  User.new.account_expires_at   # => Mon Sep 22 18:43:42 +0200 2008
+  sleep(2)
+  User.new.account_expires_at   # => Mon Sep 22 18:43:44 +0200 2008
