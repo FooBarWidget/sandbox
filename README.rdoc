@@ -251,6 +251,14 @@ even before it's saved. We could end up with the following code:
 The need to manually call +generate_uuid+ here is ugly, and one can easily forget
 to do that. Can we do better? Let's see:
 
+  # Controller
+  def create
+    @user = User.new(params[:user])
+    email_report_to_admin("#{@user.username} with UUID #{@user.uuid} created.")
+    @user.save!
+  end
+  
+  # Model
   class User < ActiveRecord::Base
     before_save :generate_uuid_if_necessary
     
@@ -264,7 +272,8 @@ to do that. Can we do better? Let's see:
     end
     
     # We need to override this too, otherwise User.new.attributes won't return
-    # a default UUID value.
+    # a default UUID value. I've never tested with User.create() so maybe we
+    # need to override even more things.
     def attributes
       uuid
       super
