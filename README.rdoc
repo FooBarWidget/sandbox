@@ -1,0 +1,154 @@
+= Introduction
+
+The default_value plugin allows one to define default values for ActiveRecord
+models in a declarative manner. For example:
+
+  class User < ActiveRecord::Base
+    default_value_for :name, "(no name)"
+    default_value_for :last_seen do
+      Time.now
+    end
+  end
+  
+  u = User.new
+  u.name       # => "(no name)"
+  u.last_seen  # => Mon Sep 22 17:28:38 +0200 2008
+
+
+== The default_value_for method
+
+The +default_value_for+ method is available in all ActiveRecord model classes.
+
+The first argument is the name of the attribute for which a default value should
+be set. This may either be a Symbol or a String.
+
+The default value itself may either be passed as the second argument:
+
+  default_value_for :age, 20
+
+...or it may be passed as the return value of a block:
+
+  default_value_for :age do
+    if today_is_sunday?
+      20
+    else
+      30
+    end
+  end
+
+If you pass a value argument, then the default value is static and never
+changes. However, if you pass a block, then the default value is retrieved by
+calling the block. This block is called not once, but every time a new record is
+instantiated and default values need to be filled in.
+
+The latter form is especially useful if your model has a UUID column. One can
+generate a new, random UUID for every newly instantiated record:
+
+  class User < ActiveRecord::Base
+    default_value_for :uuid do
+      UuidGenerator.new.generate_uuid
+    end
+  end
+  
+  User.new.uuid  # => "51d6d6846f1d1b5c9a...."
+  User.new.uuid  # => "ede292289e3484cb88...."
+
+
+== Rules
+
+=== Instantiation of new record
+
+Upon instantiating a new record, the declared default values are filled into
+the record. You've already seen this in the above examples.
+
+=== Retrieval of existing record
+
+Upon retrieving an existing record, the declared default values are _not_
+filled into the record. Consider the example with the UUID:
+
+  user = User.create
+  user.uuid   # => "529c91b8bbd3e..."
+  
+  user = User.find(user.id)
+  # UUID remains unchanged because it's retrieved from the database!
+  user.uuid   # => "529c91b8bbd3e..."
+
+=== Mass-assignment
+
+If a certain attribute is being assigned via the model constructor's
+mass-assignment argument, that the default value for that attribute will _not_
+be filled in:
+
+  user = User.new(:uuid => "hello")
+  user.uuid   # => "hello"
+
+However, if that attribute is protected by +attr_protected+ or +attr_accessible+,
+then it will be filled in:
+
+  class User < ActiveRecord::Base
+    default_value_for :name, 'Joe'
+    attr_protected :name
+  end
+  
+  user = User.new(:name => "Jane")
+  user.name   # => "Joe"
+
+=== Inhertiance
+
+Inheritance works as expected. All default values are inherited by the child
+class:
+
+  class User < ActiveRecord::Base
+    default_value_for :name, 'Joe'
+  end
+  
+  class SuperUser < User
+  end
+  
+  SuperUser.new.name   # => "Joe"
+
+=== Attributes that aren't database columns
+
++default_value_for+ also works with attributes that aren't database columns.
+It works with anything for which there's an assignment method:
+
+  # Suppose that your 'users' table only has a 'name' column.
+  class User < ActiveRecord::Base
+    default_value_for :name, 'Joe'
+    default_value_for :age, 20
+    default_value_for :registering, true
+    
+    attr_accessor :age
+    
+    def registering=(value)
+      @registering = true
+    end
+  end
+  
+  user = User.new
+  user.age    # => 20
+  user.instance_variable_get('@registering')    # => true
+
+=== Caveats
+
+If your model class overrides the 'initialize' method, then it *must* accept
+an attributes hash as the first argument. For example, things will go wrong if
+your class looks like this:
+
+  class User
+    def initialize  # <-- ERROR: must accept an attributes hash
+      super(:name => 'Name cannot be changed in constructor')
+    end
+  end
+
+In this case, you just have to change the signature a slight bit:
+
+  class User
+    def initialize(attrs = {})  # <-- notice the default argument value
+      super(:name => 'Name cannot be changed in constructor')
+    end
+  end
+
+
+== When (not) to use default_value_for?
+
