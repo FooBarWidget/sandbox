@@ -19,9 +19,9 @@ The RubySpec specification files are written in Ruby, utilizing the [MSpec](http
     git clone git://github.com/rubyspec/mspec.git
     # MSpec is now available in /some-directory/mspec.
 
-If you already have MSpec, then you should run 'git pull' from the MSpec source directory from time to time, because RubySpec often utilizes the latest MSpec features.
+If you already have MSpec, then you should run `git pull` from the MSpec source directory from time to time, because RubySpec often utilizes the latest MSpec features.
 
-By invoking the MSpec script inside the RubySpec directory, it will run the entire RubySpec suite against the Ruby interpreter (named 'ruby') in your PATH:
+By invoking the MSpec script inside the RubySpec directory, it will run the entire RubySpec suite against the Ruby interpreter (named `ruby`) in your PATH:
 
     cd /path-to-rubyspec
     /somewhere/mspec/bin/mspec
@@ -33,9 +33,9 @@ Use the `-t` option to specify the Ruby interpreter that you want to run RubySpe
     # Runs RubySpec against /opt/ruby-enterprise/bin/ruby
     /somewhere/mspec/bin/mspec -t /opt/ruby-enterprise/bin/ruby
 
-The argument may also be a shortcut. For example, if you specify `j`, then MSpec will look for 'jruby' in PATH and run RubySpec against that:
+The argument may also be a shortcut. For example, if you specify `j`, then MSpec will look for `jruby` in PATH and run RubySpec against that:
 
     # Runs RubySpec against JRuby in PATH.
     /somewhere/mspec/bin/mspec -t j
 
-See `mspec --help` for a list of possible '-t' shortcut values.
+See `mspec --help` for a list of possible `-t` shortcut values.
