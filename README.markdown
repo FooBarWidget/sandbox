@@ -51,7 +51,7 @@ You can also pass a directory, in which case all specs in that directories will 
 
     $ mspec core/kernel
 
-Note however that passing an entire directory may not always be a good idea, because some specs in that directory aren't supposed to be run against the active Ruby interpreter. For example, if you run `mspec -t /usr/bin/ruby1.8 library`, then MSpec will run the 1.9-specific library spec as well even though you specified Ruby 1.8 as the Ruby interpreter. Instead, you can specify pseudo-directories, which are defined in ruby.1.8.mspec and ruby.1.9.mspec. These pseudo-directories only include files appropriate for the active Ruby interpreter.
+Note however that passing a directory to MSpec may not always be a good idea, because some specs aren't supposed to be run against the active Ruby interpreter. For example, if you run `mspec -t /usr/bin/ruby1.8 library`, then MSpec will run the 1.9-specific library spec as well even though you specified Ruby 1.8 as the Ruby interpreter. Instead, you can specify pseudo-directories, which are defined in ruby.1.8.mspec and ruby.1.9.mspec. These pseudo-directories only include files appropriate for the active Ruby interpreter.
 
     $ mspec :core
     $ mspec :library
