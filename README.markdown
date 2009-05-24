@@ -28,14 +28,14 @@ By invoking the MSpec script inside the RubySpec directory, it will run the enti
 
 ### Running RubySpec against a specific Ruby interpreter
 
-Use the '-t' option to specify the Ruby interpreter that you want to run RubySpec against. The argument may be a full path to the Ruby binary:
+Use the `-t` option to specify the Ruby interpreter that you want to run RubySpec against. The argument may be a full path to the Ruby binary:
 
     # Runs RubySpec against /opt/ruby-enterprise/bin/ruby
     /somewhere/mspec/bin/mspec -t /opt/ruby-enterprise/bin/ruby
 
-The argument may also be a shortcut. For example, if you specify 'j', then MSpec will look for 'jruby' in PATH and run RubySpec against that:
+The argument may also be a shortcut. For example, if you specify `j`, then MSpec will look for 'jruby' in PATH and run RubySpec against that:
 
     # Runs RubySpec against JRuby in PATH.
     /somewhere/mspec/bin/mspec -t j
 
-See 'mspec --help' for a list of possible '-t' shortcut values.
+See `mspec --help` for a list of possible '-t' shortcut values.
