@@ -4,6 +4,10 @@ RubySpec is a project to write a complete, executable specification for the Ruby
 
 This project has a free-flowing commit bit policy. If you have had a patch accepted by any current Ruby implementation project, you can get a commit bit by referencing your patch. Anyone who submits an accepted patch to this project will also receive a commit bit. The only requirement is that you have a Github account.
 
+  - [RubySpec website](http://rubyspec.org/)
+  - [RubySpec Wiki with documentation](http://rubyspec.org/wiki/rubyspec)
+  - [Github repository](http://github.com/rubyspec/rubyspec)
+
 ## Running RubySpec
 
 The RubySpec specification files are written in Ruby, utilizing the [MSpec](http://github.com/rubyspec/mspec/tree/master) testing framework, so you need to download MSpec in order to run the RubySpec suite. If you don't have MSpec yet, then go to a directory outside the RubySpec directory and check out its source code from Github:
