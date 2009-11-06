@@ -27,9 +27,9 @@ It provides the following functionality:
 
 Resources:
 
-*   Website: http://github.com/FooBarWidget/daemon_controller
-*   Git repository: git://github.com/FooBarWidget/daemon_controller.git
-*   RubyForge project: http://rubyforge.org/projects/daemoncontrol/
+*   [Website](http://github.com/FooBarWidget/daemon_controller)
+*   [Git repository](git://github.com/FooBarWidget/daemon_controller.git)
+*   [RubyForge project](http://rubyforge.org/projects/daemoncontrol/)
 
 
 ## What is it for?
