@@ -25,6 +25,12 @@ It provides the following functionality:
 *   Stopping daemons.
 *   Checking whether a daemon is running.
 
+Resources:
+
+*   Website: http://github.com/FooBarWidget/daemon_controller
+*   Git repository: git://github.com/FooBarWidget/daemon_controller.git
+*   RubyForge project: http://rubyforge.org/projects/daemoncontrol/
+
 
 ## What is it for?
 
