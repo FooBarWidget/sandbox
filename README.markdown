@@ -1,7 +1,7 @@
 Introduction
 ============
 
-daemon_controller is a library for starting and stopping specific daemons
+*daemon_controller* is a library for starting and stopping specific daemons
 programmatically in a robust, race-condition-free manner.
 
 It's not a daemon monitoring system like God or Monit. It's also not a library
@@ -10,14 +10,14 @@ for writing daemons.
 It provides the following functionality:
 
 *   Starting daemons. If the daemon fails to start then an exception will be
-    raised. daemon_controller can even detect failures that occur after the
+    raised. *daemon_controller* can even detect failures that occur after the
     daemon has already daemonized.
     
     Starting daemons is done in a race-condition-free manner. If another
-    process using daemon_controller is trying to start the same daemon,
-    then daemon_controller will guarantee serialization.
+    process using *daemon_controller* is trying to start the same daemon,
+    then *daemon_controller* will guarantee serialization.
     
-    daemon_controller also raises an exception if it detects that the daemon
+    *daemon_controller* also raises an exception if it detects that the daemon
     is already started.
 *   Connecting to a daemon, starting it if it's not already started. This too
     is done in a race-condition-free manner. If the daemon fails to start then
@@ -113,8 +113,7 @@ all daemon controlling software supports this. Why can't all software check for
 stale PID files automatically?
 
 
-Implementation problems
-=======================
+## Implementation problems
 
 From the problem descriptions, it would become apparent that our wishlist is as
 follows. Why is this wishlist often not implemented? Let's go over them.
