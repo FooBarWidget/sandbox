@@ -113,7 +113,7 @@ all daemon controlling software supports this. Why can't all software check for
 stale PID files automatically?
 
 
-## Implementation problems
+## Implementation issues
 
 From the problem descriptions, it would become apparent that our wishlist is as
 follows. Why is this wishlist often not implemented? Let's go over them.
