@@ -9,21 +9,21 @@ for writing daemons.
 
 daemon_controller provides the following functionality:
 
- * Starting daemons. If the daemon fails to start then an exception will be
-   raised. daemon_controller can even detect failures that occur after the
-   daemon has already daemonized.
-   
-   Starting daemons is done in a race-condition-free manner. If another
-   process using daemon_controller is trying to start the same daemon,
-   then daemon_controller will guarantee serialization.
-   
-   daemon_controller also raises an exception if it detects that the daemon
-   is already started.
- * Connecting to a daemon, starting it if it's not already started. This too
-   is done in a race-condition-free manner. If the daemon fails to start then
-   an exception will be raised.
- * Stopping daemons.
- * Checking whether a daemon is running.
+*   Starting daemons. If the daemon fails to start then an exception will be
+    raised. daemon_controller can even detect failures that occur after the
+    daemon has already daemonized.
+    
+    Starting daemons is done in a race-condition-free manner. If another
+    process using daemon_controller is trying to start the same daemon,
+    then daemon_controller will guarantee serialization.
+    
+    daemon_controller also raises an exception if it detects that the daemon
+    is already started.
+* Connecting to a daemon, starting it if it's not already started. This too
+  is done in a race-condition-free manner. If the daemon fails to start then
+  an exception will be raised.
+* Stopping daemons.
+* Checking whether a daemon is running.
 
 
 ## What is it for?
