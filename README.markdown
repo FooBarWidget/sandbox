@@ -263,7 +263,7 @@ problem:
 Imagine the above conversation becoming just:
 
 > **Hongli:** hey Ninh, do a 'git pull', I just implemented awesome searching
->             features in our application!  
+>    features in our application!  
 >   **Ninh:** cool. *pulls from repository*  
 >   **Ninh:** awesome, it works!
 
